@@ -2,6 +2,7 @@
 namespace GDO\Sevenzip;
 
 use GDO\Core\GDO_Module;
+use GDO\Core\GDT_Array;
 use GDO\File\GDT_Path;
 use GDO\Util\Process;
 
@@ -50,6 +51,11 @@ final class Module_Sevenzip extends GDO_Module
         {
             $this->saveConfigVar('7zip_path', $path);
         }
+    }
+    
+    public function hookIgnoreDocsFiles(GDT_Array $ignore)
+    {
+        $ignore->data[] = 'GDO/Sevenzip/Archive7z/**/*';
     }
     
 }
